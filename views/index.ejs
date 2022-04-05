@@ -1,0 +1,7 @@
+<%- include('./partials/head') %> 
+<script defer>
+    const apiUrl = '<%- process.env.API_URL %>'
+    fetch(`${apiUrl}/gebruikers`).then(res => res.json()).then(json => console.log(json))
+</script>
+Index 
+<%- include('./partials/foot') %>
