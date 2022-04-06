@@ -1,0 +1,22 @@
+<%- include('./partials/openHead') %> 
+<link rel="stylesheet" href="/styles/entry.css"/>
+
+</head>
+<body>
+
+<form action="/update" method="POST">
+    <input type="number" placeholder="Id" name="id" value="<%- entry.gebruiker_id %>" readonly />
+    <input type="text" placeholder="Name" name="name" value="<%- entry.naam %>" />
+    <input type="email" placeholder="Email" name="email" value="<%- entry.email %>" />
+    <input type="submit" value="update" />
+</form>
+
+<form action="/delete" method="POST">
+    <input type="hidden" name="id" value="<%= entry.gebruiker_id %>" />
+    <input type="submit" value="delete"/>
+</form>
+
+<a href="/read">back</a>
+<a href="/">home</a>
+
+<%- include('./partials/foot') %>

@@ -1,7 +1,13 @@
 <%- include('./partials/head') %> 
-<script defer>
-    const apiUrl = '<%- process.env.API_URL %>'
-    fetch(`${apiUrl}/gebruikers`).then(res => res.json()).then(json => console.log(json))
-</script>
-Index 
+<script defer src="./modules/api.js"></script>
+
+<form action="/create" method="POST">
+    <input type="hidden" name="fromForm" value="true"/>
+    <input type="number" placeholder="Id" disabled />
+    <input type="text" placeholder="Name" name="name" />
+    <input type="email" placeholder="Email" name="email" />
+    <input type="submit" value="submit" />
+</form>
+
+<a href="/read">Read entries</a>
 <%- include('./partials/foot') %>

@@ -1,0 +1,9 @@
+<%- include('./partials/head') %> 
+
+<ul>
+<% entries.forEach((e)=> {%>
+    <li><span><%= e.naam %> </span>-<span> <%= e.email %></span> <a href="/read/<%= e.gebruiker_id %>">read</a></li>
+<%})%>
+</ul>
+<a href="/">home</a>
+<%- include('./partials/foot') %>
