@@ -15,6 +15,7 @@ app.set("views", "./views");
 
 // Stel een static map in
 app.use(express.static("public"));
+app.use("/scripts", express.static("public/scripts"));
 app.use("/modules", express.static("public/scripts/modules"));
 app.use("/styles", express.static("public/styles/"));
 
@@ -47,6 +48,23 @@ app.get("/read/:id", async (req, res) => {
         pageTitle: entry.name,
         entry,
     });
+});
+
+app.get("/gebruiker", async (req, res) => {
+    const entries = await fetch(`${process.env.API_URL}/gebruikers`)
+        .then((res) => res.json())
+        .then((json) => json.data);
+    res.json(entries);
+});
+
+app.get("/gebruiker/:id", async (req, res) => {
+    const entry = await fetch(
+        `${process.env.API_URL}/gebruikers/${req.params.id}`
+    )
+        .then((res) => res.json())
+        .then((json) => json.data[0])
+        .catch((err) => res.json(err));
+    res.json(entry);
 });
 
 app.post("/create", async (req, res) => {

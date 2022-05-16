@@ -1,13 +1,25 @@
-<%- include('./partials/head') %> 
-<script defer src="./modules/api.js"></script>
+<%- include('./partials/openhead') %>
+    <!-- if es6 supported, enhance -->
+    <script src="./scripts/index.mjs" type="module" defer></script>
 
-<form action="/create" method="POST">
-    <input type="hidden" name="fromForm" value="true"/>
-    <input type="number" placeholder="Id" disabled />
-    <input type="text" placeholder="Name" name="name" />
-    <input type="email" placeholder="Email" name="email" />
-    <input type="submit" value="submit" />
-</form>
+</head>
+<body>
 
-<a href="/read">Read entries</a>
+<main>
+    <form action="/create" method="POST">
+        <input type="hidden" name="fromForm" value="true"/>
+        <input type="number" placeholder="Id" name="id" readonly />
+        <input type="text" placeholder="Name" name="name" />
+        <input type="email" placeholder="Email" name="email" />
+        <span>
+            <input type="submit" value="submit" />
+        </span>
+    </form>
+</main>
+
+<ul class="entries">
+
+</ul>
+
+<a class="unenhanced" href="/read">Read entries</a>
 <%- include('./partials/foot') %>
